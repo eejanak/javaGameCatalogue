@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class Checkers {
     public static void main(String[] args) {
         String[][] arr = new String[8][8];
@@ -41,19 +40,26 @@ public class Checkers {
             }*/
         }
     }
-    public static int setUpBoard(String[][] arr){
+    public static void setUpBoard(String[][] arr){
         for (int y=0; y<8; y++){
-            if (y%2==0){
+            if (y>3&&y<6){
                 for (int x=0; x<8; x++){
-                    if (x%2==0){
-                        //hard code here
-                    }else{
-
-                    }
+                    arr[y][x]="";
                 }
             }else{
-                for (int x=0;)
-
+                if (y%2==0){
+                    for (int x=0; x<8; x++){
+                        if (x%2==0){
+                            arr[y][x]="W";
+                        }else{
+                            arr[y][x]="";
+                        }
+                    }
+                }else{
+                    for (int x=0; x<8; x++){
+                        arr[y][x]="";
+                    }
+                }
             }
         }
     }
