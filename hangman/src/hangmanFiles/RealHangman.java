@@ -1,4 +1,7 @@
+package hangmanFiles;
+
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,11 +19,17 @@ public class RealHangman {
             System.out.print(word + ", ");
         }
         String w = wordList[index];
+        String [] letters = new String[w.length()];
+        for (int i = 0; i < w.length(); i++) {
+            letters [i] = w.substring(i, i+1);
+        }
+
         System.out.println("The word is " + w.length() + " letters long");
         String [] wordGuess = new String[w.length()];
         for (int i = 0; i < w.length(); i++) {
             wordGuess [i] = "-";
         }
+
         System.out.println(Arrays.toString(wordGuess));
         int wrongG;
         int correctCount = 0;
@@ -34,14 +43,19 @@ public class RealHangman {
         }
         System.out.println("You will get " + wrongG + " wrong guesses, as the word is " + w.length() + " letters long");
 
+        ArrayList <String> alreadyGuessed = new ArrayList<String>();
         while (correctCount < w.length() && wrongCount < wrongG)  {
+            System.out.println("You have already guessed the letters " + alreadyGuessed);
             System.out.println("Please pick a letter ");
             String guess = name.next();
+            alreadyGuessed.add(guess);
             if (w.contains(guess)) {
                 System.out.println("The word contains " + guess);
-                for (int i = 0; i < w.length(); i++) {
-                    if (w.indexOf(guess) == i) {
-                        wordGuess[w.indexOf(guess)] = guess;
+                for (int i = 0; i < w.length (); i++) {
+                    String check = w.substring(i, i+1);
+                    System.out.println(check);
+                    if (check.equals(guess)) {
+                        wordGuess[i] = guess;
                     }
                 }
                 System.out.println(Arrays.toString(wordGuess));
