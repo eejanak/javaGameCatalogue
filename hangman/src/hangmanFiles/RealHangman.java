@@ -31,6 +31,7 @@ public class RealHangman {
         }
 
         System.out.println(Arrays.toString(wordGuess));
+        boolean playing = true;
         int wrongG;
         int correctCount = 0;
         int wrongCount = 0;
@@ -44,7 +45,7 @@ public class RealHangman {
         System.out.println("You will get " + wrongG + " wrong guesses, as the word is " + w.length() + " letters long");
 
         ArrayList <String> alreadyGuessed = new ArrayList<String>();
-        while (correctCount < w.length() && wrongCount < wrongG)  {
+        while (playing)  {
             System.out.println("You have already guessed the letters " + alreadyGuessed);
             System.out.println("Please pick a letter ");
             String guess = name.next();
@@ -56,6 +57,7 @@ public class RealHangman {
                     System.out.println(check);
                     if (check.equals(guess)) {
                         wordGuess[i] = guess;
+                        correctCount++;
                     }
                 }
                 System.out.println(Arrays.toString(wordGuess));
@@ -63,7 +65,6 @@ public class RealHangman {
                     System.out.print("-");
                 }
                 System.out.println("\n");
-                correctCount++;
             } else {
                 System.out.println(w + " does not contain " + guess);
                 System.out.println(Arrays.toString(wordGuess));
@@ -72,6 +73,13 @@ public class RealHangman {
                 }
                 System.out.println("\n");
                 wrongCount++;
+            }
+            if (correctCount < w.length() ) {
+                if (wrongCount >= wrongG) {
+                    playing = false;
+                }
+            } else {
+                playing = false;
             }
         }
         System.out.println (Results (correctCount, w.length(), wrongCount, wrongG, w));
