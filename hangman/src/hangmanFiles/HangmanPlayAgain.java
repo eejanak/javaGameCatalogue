@@ -1,8 +1,10 @@
+package hangmanFiles;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class hangman {
+public class HangmanPlayAgain {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
 
@@ -93,7 +95,6 @@ public class hangman {
             }
             System.out.println(Results(correctCount, w.length(), wrongCount, wrongG, w));
             play = replay();
-            System.out.println();
         }
     }
 
