@@ -19,9 +19,9 @@ public class index {
         if (game.equals("h")) {
             hangman.main(test);
         } else if (game.equals("p")) {
-
+            Poker.main(test);
         } else if (game.equals("c")) {
-
+            checkers.main(test);
         } else {
             System.out.println("You did not pick a game properly.");
             playGame();
